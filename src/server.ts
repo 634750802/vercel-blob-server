@@ -1,0 +1,30 @@
+import type { Handler } from './handlers/common.ts';
+import copy from './handlers/copy.ts';
+import get from './handlers/get.ts';
+import head from './handlers/head.ts';
+import put from './handlers/put.ts';
+
+const handlers: Handler[] = [
+  head,
+  get,
+  copy,
+  put,
+];
+
+Bun.serve({
+  fetch: async (request) => {
+    try {
+      const url = new URL(request.url);
+      for (let handler of handlers) {
+        if (handler.test(url, request)) {
+          return handler.handle(url, request);
+        }
+      }
+
+      return Response.json(null, { status: 404 });
+    } catch (e) {
+      console.error(e);
+      return new Response(String((e as any)?.message ?? e), { status: 500 });
+    }
+  },
+});

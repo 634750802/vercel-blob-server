@@ -1,0 +1,26 @@
+{
+  "name": "vercel-blob-server",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "bun dist/server.js",
+    "build": "bun src/build.ts",
+    "dev": "bun src/server.ts",
+    "build:docker": "docker build . --tag vercel-blob-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bun": "^1.1.13"
+  },
+  "devDependencies": {
+    "@vercel/blob": "^0.23.3",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
