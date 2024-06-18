@@ -14,8 +14,8 @@ export default defineHandler({
     const file = Bun.file(path.join(storePath, fromPath));
     if (await metaFile.exists() && await file.exists()) {
       const meta = await metaFile.json();
-      meta.url = url.pathname;
-      meta.downloadUrl = new URL(url.pathname, url.origin);
+      meta.url = new URL(url.pathname, url.origin).toString();
+      meta.downloadUrl = new URL(url.pathname + '?download=1', url.origin).toString();
       meta.pathname = url.pathname;
       meta.uploadedAt = new Date();
       await fs.mkdir(path.dirname(path.join(storePath, url.pathname)), { recursive: true });

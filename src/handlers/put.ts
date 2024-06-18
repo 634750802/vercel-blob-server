@@ -1,5 +1,4 @@
 import path from 'node:path';
-import * as URL from 'node:url';
 import { defineHandler, storePath } from './common.ts';
 
 export default defineHandler({
@@ -15,11 +14,13 @@ export default defineHandler({
     let cacheControl: string | undefined;
     if (cacheControlRaw) {
       cacheControl = `max-age=${cacheControlRaw}`;
+    } else {
+      cacheControl = 'max-age=31536000';
     }
 
     const data = {
-      url: url.pathname,
-      downloadUrl: url,
+      url: url,
+      downloadUrl: new URL('?download=1', url).toString(),
       pathname: url.pathname,
       size: blob.size,
       contentType,
