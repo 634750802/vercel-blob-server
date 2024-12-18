@@ -1,8 +1,8 @@
-FROM oven/bun:1 as base
+FROM oven/bun:1 AS base
 
 RUN mkdir /app
 
-ENV VERCEL_STORE_PATH /var/vercel-blob-store
+ENV VERCEL_STORE_PATH=/var/vercel-blob-store
 
 COPY ./dist/server.js /app
 
