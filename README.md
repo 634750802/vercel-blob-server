@@ -1,6 +1,6 @@
 # Vercel blob server
 
-> Mocking a vercel blob server ***ONLY FOR LOCAL DEVELOPMENT***.
+> Mocking a vercel blob server **_ONLY FOR LOCAL DEVELOPMENT_**.
 
 The code is **NOT TESTED**, contributions are welcome.
 
@@ -10,6 +10,7 @@ Supported API:
 - `head`
 - `put`
 - `copy`
+- `del`
 
 ## Run with docker compose
 
@@ -27,12 +28,12 @@ Add container config to your docker compose
 - port: `3000`: container http server port
 
 ```yaml
-  vercel-blob-server:
-    ports:
-      - '9966:3000'
-    image: vercel-blob-server
-    volumes:
-      - ./dev/vercel-blob-store:/var/vercel-blob-store
+vercel-blob-server:
+  ports:
+    - '9966:3000'
+  image: vercel-blob-server
+  volumes:
+    - ./dev/vercel-blob-store:/var/vercel-blob-store
 ```
 
 ## Usage

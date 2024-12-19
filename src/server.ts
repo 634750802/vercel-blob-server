@@ -1,15 +1,11 @@
 import type { Handler } from './handlers/common.ts';
 import copy from './handlers/copy.ts';
 import get from './handlers/get.ts';
+import del from './handlers/del.ts';
 import head from './handlers/head.ts';
 import put from './handlers/put.ts';
 
-const handlers: Handler[] = [
-  head,
-  get,
-  copy,
-  put,
-];
+const handlers: Handler[] = [head, get, copy, put, del];
 
 Bun.serve({
   fetch: async (request) => {
