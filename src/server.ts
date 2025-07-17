@@ -8,6 +8,7 @@ import put from './handlers/put.ts';
 const handlers: Handler[] = [head, get, copy, put, del];
 
 Bun.serve({
+  port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
   fetch: async (request) => {
     try {
       const url = new URL(request.url);
