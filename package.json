@@ -8,7 +8,8 @@
     "start": "bun dist/server.js",
     "build": "bun src/build.ts",
     "dev": "bun src/server.ts",
-    "build:docker": "docker build . --tag vercel-blob-server"
+    "build:docker": "docker build . --tag vercel-blob-server",
+    "test": "bun test"
   },
   "keywords": [],
   "author": "",

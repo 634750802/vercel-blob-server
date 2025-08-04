@@ -3,7 +3,7 @@ import path from 'node:path';
 import { defineHandler, storePath } from './common.ts';
 
 export default defineHandler({
-  name: 'put',
+  name: 'copy',
   test (url: URL, request: Request): boolean {
     return request.method === 'PUT' && url.searchParams.has('fromUrl');
   },
